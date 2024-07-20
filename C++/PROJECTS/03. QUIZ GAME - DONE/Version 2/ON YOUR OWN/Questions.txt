@@ -1,0 +1,10 @@
+1. What is admin's name? , Nguyen Huy Hoang; Nguyen Hoang; Vo Nguyen Huy Hoang; Nguyen Minh Hoang, A, 10
+2. Full birthdate?, 08/11/2005; 03/03/2005; 22/07/2005; 01/11/2005, B, 10
+3. What is my height?, 1m9; 1m8; 1m7; 1m75, C, 10
+4. Our solar system belongs to which galaxy?, Zodiac Galaxy; Starburst Galaxy; Small Magellanic Cloud; Milky Way Galaxy, D, 10
+5. In 1954, which war concluded with the signing of the Geneva Accords?, World War II; Cold War; Korean War; Vietnam War, D, 10
+6. Which country is named after a famous mountain range?, Canada; Jordan; Nepal; Peru, C, 10
+7. Which mathematician from England, is famous for naming his differential equation?, George Boole; Isaac Newton; Alan Turing; Charles Babbage, B, 10
+8. In literature, what is the name of the fictional detective created by Arthur Conan Doyle? , Sherlock Holmes; Hercule Poirot; Sam Spade; Miss Marple, A, 10
+9. Who is the founder of Naturalism and Taoism philosophy in China?, Fe; Francium; Fluor; Phosphorus, D, 10
+10. In physics, what is the fundamental constant that relates a photon's energy to its frequency?, Boltzmann constant; Avogadro's constant; Planck's constant; Speed of light, C, 10

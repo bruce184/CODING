@@ -1,0 +1,28 @@
+Why you need to learn Python: 
+1. easiest language 
+2. No.1 in popularity 
+3. high salary 
+-------------------------------
+VALUE
+a container for a value. 
+behaves as the avlue that it contains.
+use '' or "", make sure not to include the '' (print out name not Bro): 
+    name = 'Bro'
+    print(type(name)) # the data type of the data
+    print('Hello' + name) # combine name 
+
+
+Python will execute the code line after line acordingly
+
+
+
+
+
+
+
+
+
+
+
+
+
