@@ -46,7 +46,12 @@ class CSV:
             writer = csv.DictWriter(csv_file, fieldnames = cls.columns) 
             writer.writerow(new_entry)
         print('Entry added successfully!')
-  
+
+    # GET THE DATA TO DISPLAY IN A TABLE
+    @classmethod 
+    def data(cls):
+        df = pd.read_csv(cls.CSV_FILE)
+        return df.values.tolist()
 
     # VIEW THE DATA IN A PERIOD
     @classmethod
@@ -55,8 +60,8 @@ class CSV:
         # Open and Read the data file 
             df = pd.read_csv(cls.CSV_FILE)
             # To check if it runs 
-            print("Data before conversion:")
-            print(df.head())
+            # print("Data before conversion:")
+            # print(df.head())
 
         # Convert the 'Date' column into datetime objects 
             # Access all the values in the date column
@@ -80,11 +85,18 @@ class CSV:
             print('No transactions found in the given date range')
         # If there is 
         else: 
+            print('---------------------//------------------------')
             print(f'Transaction from {start_date.strftime(cls.format)} to {end_date.strftime(cls.format)}')
                 # NOT 100% CLEAR 
                 # 'date' (column name) as the key, and the function we want to apply to every element inside that column
             print(filtered_df.to_string(index = False, formatters = {'Date': lambda x: x.strftime(cls.format)})) # lambda function (1st x is the parameter, the rest is the expression)
-            
+
+            # # Convert DataFrame to list of lists to display 
+            # data = filtered_df.values.tolist()
+            # headers = cls.columns
+            # # Display the table
+            # display_table(data, headers)
+
             # Compile a Summary for easier reading 
             total_income = filtered_df[filtered_df['Category'] == 'Income']['Amount'].sum()
             total_expense = filtered_df[filtered_df['Category'] == 'Expense']['Amount'].sum()
@@ -92,9 +104,11 @@ class CSV:
             print(f'Total Income: ${total_income:.2f}')
             print(f'Total Expense: ${total_expense:.2f}')
             print(f'Net Savings: ${(total_income - total_expense):.2f}')
+            print('---------------------//------------------------')
         
         # What does this do???
         return filtered_df 
+
 
 # A FUNCTION TO MAKE A DEPOSIT
 def add():
@@ -105,6 +119,16 @@ def add():
     description = get_description()
     CSV.entry(date, amount, category, description)
 # CSV.transactions('01-01-2024', '30-07-2025')
+
+
+# A FUNCTION TO DISPLAY THE DATA INTO A TABLE 
+def display_table(data, headers):
+    col_widths = [max(len(str(item)) for item in col) for col in zip(*data, headers)]
+    format_string = " | ".join(f"{{:<{width}}}" for width in col_widths)
+    print(format_string.format(*headers))
+    print("-" * (sum(col_widths) + 3 * (len(headers) - 1)))
+    for row in data:
+        print(format_string.format(*row))
 
 
 # CONVERT FROM A TEXT-BASED DATA DISPLAY TO A GRAPHICAL DATA DISPLAY 
@@ -124,12 +148,16 @@ def plot_transactions(df):
     plt.figure(figsize = (10, 5))
     plt.plot(income_df.index, income_df['Amount'], label = 'Income', c = 'g')
     plt.plot(expense_df.index, expense_df['Amount'], label = 'Expense', c = 'r')
-    plt.xlabel('Date')
-    plt.ylabel('Amount')
-    plt.title('Income and Expense over Time')
+    plt.title('Income and Expense over Time', fontdict = {'family': 'serif', 'color': 'blue', 'size': 25, 'weight':'bold'})
+    plt.xlabel('Date', fontdict = {'family': 'serif', 'color': 'blue', 'size': 15, 'weight':'bold'})
+    plt.ylabel('Amount ($)', fontdict = {'family': 'serif', 'color': 'blue', 'size': 15, 'weight':'bold'})
     plt.legend()
-    plt.grid(True) 
+    # plt.grid(True) 
+    plt.grid(which = 'major', ls = '-', c = 'black', lw = '1.0')
+    # plt.minorticks_on()
+    # plt.grid(which = 'minor', ls = '-', c = 'grey', lw = '1.0')
     plt.show()
+
 
 # THE 'MAIN' CODE FOR ALL THE FUNCTIONS 
 def main():
